@@ -1,40 +1,35 @@
-from model.Telefone import Telefone
+from model.Pessoa import Pessoa
+import pickle
 from model.Contato import Contato
-import json
+class Agenda(Pessoa):
 
-class Agenda():
-
-    def __init__(self,proprietario,nome,nascimento,email,numero,ddd,codigoPais):
+    def __init__(self,proprietario,nascimento,email):
         self.proprietario = proprietario
-        self.contatos = []
-        self.nome = nome
         self.nascimento = nascimento
         self.email = email
-        self.numero = numero
-        self.ddd = ddd
-        self.codigoPais = codigoPais
+
 
     def contarContatos(self):
-        return len(self.contatos)
+        pass
     def listarContatos(self):
+        pass
 
-        for contato in self.contatos:
-            print(contato)
 
-    def incluirContato(self, contato):
-        self.contatos.append(contato)
-    def buscarConato(self,nome):
+    def incluirContato(self):
 
-        for contato in self.contatos:
-            if contato == nome:
-                return contato
-            else:
-                return ("Infelizmente, nome do contato  digitado inválido")
+        while ( x == 's'):
+
+            c1 = Contato(criacao = input("Digite a data de hoje:\n"), nome = input("Nome do contato: \n"),email = input("Email:\n"), numero = input("Numero do telefone:\n"), ddd = input("ddd\n"), codigoPais = input("Codigo do Pais:\n"))           dicc = {'DATA DE CRIACAO DO CONTATO': c1.criacao, 'NOME': c1.nome, 'EMAIL': c1.email, 'NUMERO': c1.numero,'DDD': c1.ddd, 'CODIGO DO PAIS': c1.codigoPais }
+            arquivo = open("contatos.json", 'wb')
+            pickle.dump(dicc, arquivo)
+            arquivo.close()
+            arquivo = open("contatos.json", "rb")
+            dicc = pickle.load(arquivo)
+            arquivo.close()
+            x = int(input("Deseja adicionar mais um contato ? \n"))
+
+    def buscarConato(self):
+          pass
 
     def excluirContato(self,nome):
-        self.contatos.remove(self.buscarContato(nome))
-
-    def salvarJson(self):
-        arquivo = open('contatos.json', 'w')
-        arquivo.write(json.dumps(self.contatos))
-        arquivo.close()
+        pass

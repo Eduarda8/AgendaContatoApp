@@ -1,12 +1,9 @@
-from model.Pessoa import Pessoa
-import datetime
-import json
-
 class Contato():
-    def __init__(self,telefone,pessoa):
-        self.telefone = telefone
-        self.pessoa = pessoa
-        self.criacao = datetime.datetime.now()
+    def __init__(self,criacao,nome,email,numero,ddd,codigoPais):
 
-    def litarTelefones(self):
-        pass
+        self.criacao = criacao
+        self.nome = nome
+        self.email = email
+        self.numero = numero
+        self.ddd = ddd
+        self.codigoPais = codigoPais
