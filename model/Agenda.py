@@ -1,35 +1,39 @@
+
+    #Importação da Classes que são necessarias para criar a Agenda.
 from model.Pessoa import Pessoa
-import pickle
 from model.Contato import Contato
+
+    #Criação da Agenda e suas funções
 class Agenda(Pessoa):
 
-    def __init__(self,proprietario,nascimento,email):
+    # (Precisa comentar)
+    def __init__(self,proprietario,contatos = []):
         self.proprietario = proprietario
-        self.nascimento = nascimento
-        self.email = email
+        self.contatos = []
 
+    # (Precisa comentar)
+    def __str__(self):
+        return "Agenda[%s]"%(self.proprietario)
 
+    # (Precisa comentar)
     def contarContatos(self):
-        pass
+        contato = Contato()
+        return len(self.contatos)
+
+    # (Precisa comentar)
     def listarContatos(self):
-        pass
+        return self.contatos
 
+    # Função para incluir um ou mais contatos em uma lista;
+    def incluirContato(self, contato):
+        self.contatos.append(contato)
+        print("Contato adicionado na Agenda")
 
-    def incluirContato(self):
+    # Função para excluir um contato da lista;
+    def excluirContato(self, nome):
+        nome = input("Qual contato você dejesa excluir:")
+        Agenda.excluirContato(nome)
 
-        while ( x == 's'):
-
-            c1 = Contato(criacao = input("Digite a data de hoje:\n"), nome = input("Nome do contato: \n"),email = input("Email:\n"), numero = input("Numero do telefone:\n"), ddd = input("ddd\n"), codigoPais = input("Codigo do Pais:\n"))           dicc = {'DATA DE CRIACAO DO CONTATO': c1.criacao, 'NOME': c1.nome, 'EMAIL': c1.email, 'NUMERO': c1.numero,'DDD': c1.ddd, 'CODIGO DO PAIS': c1.codigoPais }
-            arquivo = open("contatos.json", 'wb')
-            pickle.dump(dicc, arquivo)
-            arquivo.close()
-            arquivo = open("contatos.json", "rb")
-            dicc = pickle.load(arquivo)
-            arquivo.close()
-            x = int(input("Deseja adicionar mais um contato ? \n"))
-
+    # Função para buscar os contatdos adicionados na Agenda;
     def buscarConato(self):
           pass
-
-    def excluirContato(self,nome):
-        pass
