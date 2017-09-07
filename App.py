@@ -1,66 +1,78 @@
-from model.Contato import Contato
-from model.Pessoa import Pessoa
-from model.Agenda import Agenda
-from model.Telefone import Telefone
-from datetime import datetime
+def menu():
+  print("MENU\n")
+  print("1- Incluir Contato\n")
+  print("2- Listar Contatos\n")
+  print("3- Remover Contatos\n")
+  print("4- Buscar Contato\n")
+  print("5- Quantidade de Contatos\n")
+  print("6- Sair\n")
+
+def criarProrietario():
+  
+  nome = str(input("Digite Seu Nome:\n"))
+  nascimento = str(input("Digite Sua Data de Nascimento:\n"))
+  email = str(input("Digite Seu Email:\n"))
+  proprietario = Pessoa(nome, nascimento, email)
+  return proprietario
+  
+def adicionar():
+   
+   nome = str(input("Digite Seu Nome:\n"))
+   nascimento = str(input("Digite Sua Data de Nascimento:\n"))
+   email = str(input("Digite Seu Email:\n"))
+   numero = str(input("Digite o Numero do Contato:\n"))
+   ddd = str(input("Digite o DDD:\n"))
+   codigoPais = str(input("Digite o C�digo do Pais:\n"))
+   criacao = str(input("Digite a Data de Cria��o:\n"))
+   
+   contato = Contato(nome, nascimento, email, numero,ddd,codigoPais,criacao)
+   
+   listadecontatos =[contato.nome, contato.nascimento ,contato.email,contato.numero ,contato.ddd, contato.codigoPais ,contato.criacao] 
+   
+   return listadecontatos
+   
+   
+   
+  
+  
+
+menu()
+
+agenda = criarProrietario()
 
 
-def main():
-        #Criação da função menu para a agenda telefônica;
-        #criarPessoa()
 
-    def criarPessoa():
-        nome = input("Informe o nome do proprietário:")
-        nascimento = input("Informe a data do nascimento do proprietário:")
-        email = input("Informe o email do proprietário:")
-        pessoa = Pessoa(nome, nascimento, email)
+continuar = True
+while continuar == True:
+  try:
+    op = int(input("Escolha uma Op��o"))
+    if (op == 1):
+      ad = adicionar()
+      print("Deseja Adicionar Outro Contato: s/n")
+      resp = input()
+      
+      if (resp == "s"):
+        
+        while (resp == "s"):
+          if (resp == "s"):
+           
+            ad = ad.append(adicionar())
+            print("Deseja Adicionar Outro Contato: s/n")
+            resp = input()
+          else:
+            continuar = False
+      
+    elif (op == 2):
+      print(ad)
+    elif (op == 3):
+      pass
+    elif (op == 4):
+      pass
+    elif (op == 5):
+      pass
+    else:
+      continuar = False
+      
+  except (ValueError, NameError):
+    print("Ops! Op��o Inv�lida ")
 
-        return pessoa
-
-    def criarContato():
-
-        # Adicionando os dados do Propietário
-        pessoa = criarPessoa()
-        criacao = input("Criação do contato:")
-        contato = Contato(pessoa)
-
-    def criarAgenda():
-        #cadastro do proprietário
-        nome = input("Informe o nome do proprietário:")
-        nascimento = input("Informe a data do nascimento do proprietário:")
-        email = input("Informe o email do proprietário:")
-
-        proprietario = Pessoa(nome,nascimento,email)
-        agenda = Agenda(proprietario)
-
-        # Criação da função menu para a agenda telefônica;
-        def menu():
-            print("===== Menu - Agenda Telefônica =====\n"
-
-              "1 - Incluir Contato \n"
-              "2 - Listar contatos \n"
-              "3 - Remover contato \n"
-              "4 - Buscar contato \n "
-              "5 - Quantidade de contatos \n"
-              "6 - Sair \n")
-
-                # Tratando com as possiveis erros ou exceções que pode ocorrer na resposta do usuario;
-            try:
-                resp = input("Informe a opção desejada: ")
-                if (resp == 1):
-                    resp.incluirContato()
-                elif (resp == 2):
-                    resp.listarContatos()
-                elif (resp == 3):
-                    resp.excluirContato()
-                elif (resp == 4):
-                    resp.buscarContato()
-                elif (resp == 5):
-                    resp.contarContatos()
-                elif (resp == 6):
-                    pass
-            except:
-                print("Infelizmente ouve um erro... Please, tente novamente !")
-
-if __name__ == "__main__":
-    main()
