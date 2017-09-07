@@ -1,16 +1,29 @@
-
-    # Classe do Objeto contato da agenda telefonica;
 class Contato():
+ 
+ 	def __init__(self, criacao, nome,nascimento,email,numero,ddd,codigoPais):
+   
+ 		self.criacao = criacao
+   
+ 		self.nome = nome
+    
+		self.nascimento = nascimento
+  
+  		self.email = email
+   
+ 		self.numero = numero
+    
+		self.ddd = ddd
+    
+		self.codigoPais = codigoPais
+    
+  
 
-    # (Precisa comentar)
-    def __init__(self, criacao, pessoa):
-        self.criacao = criacao
-        self.pessoa = pessoa
-
-    # (Precisa comentar)
-    def listarTelefones(self):
-        return self.telefones
-
-    # (Precisa comentar)
-    def __str__(self):
-        return "Agenda[%s]"%(self.proprietario)
+ 	def __str__(self):
+   
+ 		return "Contato: %s nascimento: %s email: %s numero: %s ddd: %s codigo Pais: %s"%(self.nome,self.nascimento,self.email,self.numero,self.ddd,self.codigoPais)
+    
+    
+ 
+ 	def listarTelefones(self):
+   
+ 		return []
