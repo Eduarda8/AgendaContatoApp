@@ -1,3 +1,9 @@
+from model.Agenda import Agenda
+from model.Pessoa import Pessoa
+from model.Telefone import Telefone
+from model.Contato import Contato
+
+
 def menu():
   print("MENU\n")
   print("1- Incluir Contato\n")
@@ -22,8 +28,8 @@ def adicionar():
    email = str(input("Digite Seu Email:\n"))
    numero = str(input("Digite o Numero do Contato:\n"))
    ddd = str(input("Digite o DDD:\n"))
-   codigoPais = str(input("Digite o CÛdigo do Pais:\n"))
-   criacao = str(input("Digite a Data de CriaÁ„o:\n"))
+   codigoPais = str(input("Digite o C√≥digo do Pais:\n"))
+   criacao = str(input("Digite a Data de Cria√ß√£o:\n"))
    
    contato = Contato(nome, nascimento, email, numero,ddd,codigoPais,criacao)
    
@@ -45,7 +51,7 @@ agenda = criarProrietario()
 continuar = True
 while continuar == True:
   try:
-    op = int(input("Escolha uma OpÁ„o"))
+    op = int(input("Escolha uma Op√ß√£o"))
     if (op == 1):
       ad = adicionar()
       print("Deseja Adicionar Outro Contato: s/n")
@@ -74,5 +80,5 @@ while continuar == True:
       continuar = False
       
   except (ValueError, NameError):
-    print("Ops! OpÁ„o Inv·lida ")
+    print("Ops! Op√ß√£o Inv√°lida ")
 
