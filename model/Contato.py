@@ -6,30 +6,27 @@ os seus atributos de um Contato;
 
     # Importação das classes necessarias para a execução do Contato;
 from model.Pessoa import Pessoa
-from model.Telefone import Telefone
 import datetime
 import json
 
-    # Criação de uma lista de Contatos;
-relacaoContato = []
-
     # Classe do Objeto contato da agenda telefonica;
-class Contato(Telefone):
+class Contato(Pessoa):
 
     # (Precisa comentar)
-    def __init__(self, criacao, pessoa):
-        self.criacao = datetime.date.today() # Mostra a data do dia da execução do programa
-        self.pessoa = Pessoa
-        self.telCont = Telefone()
-        self.contato = (str(self.criacao)+" "+ str(self.pessoa)+" "+ str(self.telCont))
+    def __init__(self, criacao, pessoa, telefone = []):
 
-        # Essa função (append), vai adicionar cada telefone em uma lista;
-        relacaoContato.append(self.contato)
+        self.criacao = criacao
+
+    # self.criacao = datetime.date.today() # Mostra a data do dia da execução do programa
+
+        self.pessoa = pessoa
+        self.telCont = telefone
+        self.contato = (str(self.criacao)+" "+ str(self.pessoa)+" "+ str(self.telCont))
 
     # (Precisa comentar)
     def listarTelefones(self):
-        return self.telefones
+        return self.telCont
 
     # Método mágico __str__ do Contato;
     def __str__(self):
-        return("Data da Criação: "+ str(self.criacao)+"\nContato: \n"+str(self.pessoa)+"\nNúmero: "+str(self.telCont))
+        return ("Data da Criação: "+ str(self.criacao)+"\nContato: \n"+str(self.pessoa)+"\nNúmero: "+str(self.telCont))
